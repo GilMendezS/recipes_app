@@ -14,6 +14,10 @@ app.use(cors());
 
 const PORT = process.env.PORT;
 
+//routes
+app.use('/api/categories', require('./api/routes/category'));
+
+
 mongoose.connect('mongodb://localhost:27017/recipes', {useNewUrlParser: true})
 .then(db => {
     console.log('db connected')
