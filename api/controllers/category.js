@@ -50,5 +50,14 @@ exports.updateCategory = async (req, res, next) => {
     }
 }
 exports.removeCategory = async (req, res, next) => {
-    
+    try {
+        const categoryId = req.params.id;
+        await Category.findByIdAndRemove(categoryId);
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error deleting the category',
+            success: false,
+            error
+        })
+    }
 }
