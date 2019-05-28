@@ -6,9 +6,8 @@ const ingredientSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    categoryId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Category',
+    quantity: {
+        type: String,
         required: true
     }
 })
