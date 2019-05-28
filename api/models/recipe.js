@@ -8,13 +8,7 @@ const recipeSchema = new mongoose.Schema({
     description: {
         type: String,
         required: true
-    },
-    ingredients: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ingredient'
-        }
-    ]
+    }
 
 })
 recipeSchema.set('timestamps', true);

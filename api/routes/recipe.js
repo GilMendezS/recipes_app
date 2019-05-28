@@ -5,4 +5,6 @@ router.get('/', RecipeController.getRecipes);
 
 router.post('/',RecipeController.createRecipe);
 
+router.get('/:id', RecipeController.getRecipe);
+
 module.exports = router;

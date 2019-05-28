@@ -16,7 +16,29 @@ exports.getRecipes = async (req, res, next) => {
         })
     }
 }
-
+exports.getRecipe = async (req, res, next) => {
+    try {
+        const recipeId = req.params.id;
+        const recipe = await Recipe.findById(recipeId);
+        const ingredients = await Ingredient.find({
+            recipeId: recipeId
+        })
+        
+        return res.status(200).json({
+            success: false,
+            data: {
+                recipe,
+                ingredients
+            }
+        })
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error fetching the recipe',
+            success: false,
+            error
+        })
+    }
+}
 exports.createRecipe = async (req, res, next) => {
     try {
         const recipe = await Recipe.create({
