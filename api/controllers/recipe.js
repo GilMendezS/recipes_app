@@ -65,3 +65,21 @@ exports.createRecipe = async (req, res, next) => {
         })
     }
 }
+
+exports.removeRecipe = async (req, res, next) => {
+    try {
+        const recipeId = req.params.id;
+        await Ingredient.remove({recipeId: recipeId});
+        await Recipe.findByIdAndRemove(recipeId);
+        return res.status(200).json({
+            message: 'The recipe was removed',
+            success: true
+        });
+    } catch (error) {
+        return res.status(500).json({
+            message: 'Error removing the recipe',
+            success: false,
+            error
+        });
+    }
+}
