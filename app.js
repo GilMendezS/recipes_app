@@ -16,13 +16,13 @@ const PORT = process.env.PORT;
 
 //routes
 app.use('/api/categories', require('./api/routes/category'));
-
+app.use('/api/recipes', require('./api/routes/recipe'));
 
 mongoose.connect('mongodb://localhost:27017/recipes', {useNewUrlParser: true})
 .then(db => {
     console.log('db connected')
     app.listen(PORT, () => {
-        console.log('Server Running');
+        console.log('Server Running ' + PORT);
     })
 })
 .catch(err => {
